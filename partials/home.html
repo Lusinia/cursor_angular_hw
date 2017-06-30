@@ -1,0 +1,9 @@
+<h1>Shop Page</h1>
+<h2>Home</h2>
+ 
+ <a href="#orders" class="btn btn-primary btn-lg">My Orders</a>
+ <a href="#add" class="btn btn-primary btn-lg">Add</a>
+ 
+ <ul class="list">
+ 	<li  data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"'> {{ prod.title }} <br> <img  src="{{ prod.img }}"/> <br> {{ prod.desc }}</li>
+ </ul>

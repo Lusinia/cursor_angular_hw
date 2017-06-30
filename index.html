@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"  data-ng-app="shopApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+  
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body >
+ <!-- placeholder for views -->
+    <div class="page {{ pageClass }}"  data-ng-view=""></div>
+
+    <!-- JS -->
+    <!-- load angular, ngRoute, ngAnimate -->
+    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+ 
+</body>
+
+</html>

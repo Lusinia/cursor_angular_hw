@@ -1,0 +1,9 @@
+<h1>Shop Page</h1>
+<h2>Orders</h2>
+ 
+  <ul class="orders-list">
+ 	<li  data-ng-repeat='order in orders | filter: order.id | orderBy: "id"'> {{ order.id  }}- {{ order.title }} <button class="remove">Remove</button></li>
+ </ul>
+ 
+
+<a href="#" data-ng-click='addProduct()' class="btn btn-primary btn-lg">Home</a>
