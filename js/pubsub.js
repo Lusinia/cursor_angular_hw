@@ -1,25 +1,25 @@
-var events = {
-    events = {},
-    on: function(eventName, fn) {
-        this.events[eventName] = this.events[eventName] || [];
-        this.events[eventName].push(fn);
-    },
-    off: function(eventName, fn) {
-        if (this.events[eventName]) {
-            for (var i = 0; i < this.events[eventName].length; i++) {
-                if (this.events[eventName][i] === fn) {
-                    this.events[eventName].splice(i, 1);
-                    break;
-                }
-            }
-        }
-    },
-    emit: function(eventName, data) {
-        if (this.events[eventName]) {
-            this.events[eventName].forEach(function(fn) {
-                fn(data);
-            });
-
-        }
-    }
-}
+// var pubsub = {
+//     pubsub = {},
+//     subscribe: function(eventName, fn) {
+//         this.pubsub[eventName] = this.pubsub[eventName] || [];
+//         this.pubsub[eventName].push(fn);
+//     },
+//     unsubscribe: function(eventName, fn) {
+//         if (this.pubsub[eventName]) {
+//             for (var i = 0; i < this.events[eventName].length; i++) {
+//                 if (this.pubsub[eventName][i] === fn) {
+//                     this.pubsub[eventName].splice(i, 1);
+//                     break;
+//                 }
+//             }
+//         }
+//     },
+//     publish: function(eventName, data) {
+//         if (this.pubsub[eventName]) {
+//             this.pubsub[eventName].forEach(function(fn) {
+//                 fn(data);
+//             });
+//
+//         }
+//     }
+// }

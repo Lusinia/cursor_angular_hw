@@ -1,9 +1,11 @@
 <h1>Shop Page</h1>
 <h2>Home</h2>
  
- <a href="#orders" class="btn btn-primary btn-lg">My Orders</a>
+ <a href="#orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg">My Orders {{orders.length}}</a>
  <a href="#add" class="btn btn-primary btn-lg">Add</a>
  
  <ul class="list">
- 	<li  data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"'> {{ prod.title }} <br> <img  src="{{ prod.img }}"/> <br> {{ prod.desc }}</li>
+     <a href="#product/{{ prod.id }}" data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"'  >
+     <li> {{ prod.title }} <br> <img  src="{{ prod.img }}" width="150" /> <br> {{ prod.desc.substring(0, 100) }}</li>
+     </a>
  </ul>
