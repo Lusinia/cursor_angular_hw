@@ -34,38 +34,38 @@ gulp.task("css", function () {
 
 });
 
+//
+// gulp.task("js", function () {
+//     return gulp.src("./src/js/es6/app.js")
+//        .pipe(jshint('.jshintrc'))
+//         .pipe(jshint.reporter('jshint-stylish', {beep: true}))
+//         .pipe(babel({
+//             'presets': ['es2015']
+//         }))
+//       .pipe( sourcemaps.init())
+//      //   .pipe(concat('app.js'))
+//        // .pipe( uglify())
+//        .pipe( sourcemaps.write())
+//         .pipe(gulp.dest("./build/js"))
+//  });
 
-gulp.task("js", function () {
-    return gulp.src("./src/js/es6/app.js")
-       .pipe(jshint('.jshintrc'))
-        .pipe(jshint.reporter('jshint-stylish', {beep: true}))
-        .pipe(babel({
-            'presets': ['es2015']
-        }))
-      .pipe( sourcemaps.init())
-     //   .pipe(concat('app.js'))
-       // .pipe( uglify())
-       .pipe( sourcemaps.write())
-        .pipe(gulp.dest("./build/js"))
- });
-
-// gulp.task("js", function (cb) {
-//     pump([
-//             gulp.src(["./src/js/es6/*.js"]), //"./src/js/libs/*.js",
-//             jshint('.jshintrc'),
-//             jshint.reporter('jshint-stylish', {beep: true}),
-//             babel({
-//                 'presets': ['es2015']
-//             }),
-//             sourcemaps.init(),
-//             concat('app.js'),
-//             uglify(),
-//             sourcemaps.write(),
-//             gulp.dest("./build/js")
-//         ], cb
-//     )
-//     ;
-// });
+gulp.task("js", function (cb) {
+    pump([
+            gulp.src(["./src/js/es6/app.js"]), //"./src/js/libs/*.js",
+            jshint('.jshintrc'),
+            jshint.reporter('jshint-stylish', {beep: true}),
+            babel({
+                'presets': ['es2015']
+            }),
+            sourcemaps.init(),
+            concat('app.js'),
+            uglify(),
+            sourcemaps.write(),
+            gulp.dest("./build/js")
+        ], cb
+    )
+    ;
+});
 
 gulp.task("copy", function () {
     return gulp.src("./src/img/*.*")
@@ -84,8 +84,7 @@ gulp.task("html", function () {
 gulp.task("server", function () {
     browserSync.init({
         open: true,
-        server: "./build",
-        injectChanges: true
+        server: "./build"
     });
     browserSync.watch([
         "./build/partials/*.html", './build/index.html', './build/styles/*.css', './build/js/es6/app.js'
@@ -96,7 +95,7 @@ gulp.task('watch', function () {
     gulp.watch(['./index.html'], ['index']);
     gulp.watch(['./src/partials/*.html'], ['html']);
     gulp.watch(['./src/img/*.*'], ['copy']);
-    gulp.watch(['./src/js/es6/app.js'], ['js']);
+    gulp.watch(['./src/js/es6/**/*.js'], ['js']);
     gulp.watch(['./src/styles/less/*.less'], ['css']);
 });
 
