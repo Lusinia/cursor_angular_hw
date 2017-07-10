@@ -159,7 +159,6 @@ shopApp.controller("mainController",
                 });
                 productsFactory.setProducts(list);
                 $scope.products = list;
-                console.log('productsFactory.getJSON()', productsFactory.getJSON());
 
             });
         }
@@ -184,9 +183,7 @@ shopApp.controller("ShowProduct",
         $scope.genre = currentProduct.genre;
         $scope.description = currentProduct.description;
         $scope.cost = currentProduct.cost;
-
         $scope.products = productsFactory.getProducts();
-         // console.log('currentProduct', currentProduct);
 
         $scope.addOrder = (item) => {
             ordersFactory.addOrder({
@@ -197,6 +194,7 @@ shopApp.controller("ShowProduct",
             });
 
         };
+
         $scope.deleteProduct = () => {
 
             var index = $scope.products.indexOf(currentProduct);
@@ -204,13 +202,8 @@ shopApp.controller("ShowProduct",
                 index: index,
                 product: currentProduct
             });
-            // $scope.products.splice(index, 1);
-            // console.log('index', index);
-            // console.log('products', products);
 
         }
-
-
     }
     ]);
 
@@ -221,11 +214,9 @@ shopApp.controller("ShowOrders",
         $scope.sum = ordersFactory.defineCostForItems(ordersFactory.getOrders());
         $scope.item = {};
         $scope.selected = {value: 0};
-        console.log('$scope.sum',$scope.sum);
 
         let init = () => {
             $scope.orders = ordersFactory.getOrders();
-            console.log(' $scope.orders', $scope.orders);
         };
 
         init();

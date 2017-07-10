@@ -2,9 +2,12 @@
 
 <h1>Shop Page</h1>
 <h2>Home</h2>
- 
- <a href="#orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg">My Orders {{orders.length}}</a>
- <a href="#add" class="btn btn-primary btn-lg">Add</a>
+ <div class="buttons">
+     <a href="#add" class="btn btn-primary btn-lg">Add</a>
+
+     <a href="#orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">My Orders {{orders.length}}</a>
+ </div>
+
  <ul class="list">
 
         <li data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"' data-ng-click="showProduct(prod)" data-ng-model="item">
@@ -13,15 +16,15 @@
 
                             <a href="#product/{{ prod.id }}">
                             <h3>  {{ prod.title }} </h3>
-                            <img  src="{{ prod.img }}" width="150" class="md-card-image" alt="image caption" /> <br>
-                        </a>
-                            <md-card-content>
+                            <img  src="{{ prod.img }}" width="100" class="md-card-image" alt="image caption" /> <br>
+                           </a>
+
                                 <p class="desc">
-                                    {{ prod.description.substring(0, 50) }}
+                                    {{ prod.description.substring(0, 50) }} ...
                                 </p>
+                                    <div class="cost">{{prod.cost}} $</div>
 
 
-                            </md-card-content>
 
 
                     </md-card>

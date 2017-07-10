@@ -1,5 +1,17 @@
 .mainPageStyle {
+h1 {
+  text-align: center;
+}
+  .buttons {
+    width:100%;
+    float: right;
+    a {
+      float: right;
+      display: inline-block;
+      margin:10px;
+    }
 
+  }
    ul {
      display: flex;
      flex-wrap: wrap;
@@ -8,7 +20,8 @@
        width: 200px;
        height: 300px;
        display: inherit;
-       a:hover {
+
+        a:hover {
          cursor: pointer;
        }
        p.genre {
@@ -19,11 +32,10 @@
          text-decoration: none;
          font-size: 12px;
        }
-       md-card > img, md-card > md-card-header img, md-card md-card-title-media img {
-         height:190px;
-       }
+
        md-card {
          height:100%;
+         width:100%;
        }
      }
    }
