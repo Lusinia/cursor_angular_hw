@@ -1,6 +1,16 @@
 @mainColor: #fafafa;
 @mainFontColor: darkblue;
 
+@import "home";
+@import "add";
+@import "orders";
+@import "produst";
+
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: @mainColor;
   background-image: url(../img/concrete-texture.png);
@@ -9,7 +19,21 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 0;
-  h3, h4 {
-    margin:5px;
-  }
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+}
+footer {
+  text-align: center;
+  margin: 20px;
+  font-size: 18px;
+  color: dodgerblue;
+}

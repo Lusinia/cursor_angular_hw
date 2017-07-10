@@ -1,12 +1,12 @@
 <div class="{{pageStyle}}">
 
-<h1>Shop Page</h1>
-<h2>Orders</h2>
+<h1>Книжная лавочка</h1>
+<h2>Твои заказы</h2>
  
   <ul class="orders-list">
- 	<li  data-ng-repeat='order in orders | filter: order.id | orderBy: "id"'> № {{ order.id  }}. <span> {{ order.title }}</span> - {{ order.quantity }} pc  ({{ order.cost*order.quantity}} $)<button class="remove" data-ng-click='removeOrder($index)'  >Remove</button></li>
+ 	<li  data-ng-repeat='order in orders | filter: order.id | orderBy: "id"'> № {{ order.id  }}. <span> {{ order.title }}</span> - {{ order.quantity }} pc  ({{ order.cost*order.quantity}} $)<button class="btn btn-danger" data-ng-click='removeOrder($index)'  >Удалить</button></li>
  </ul>
  <div class="sum"><span>Общая сумма: </span> <span class="sumInfo">{{ sum }} $</span></div>
 
-<a href="#" class="btn btn-primary btn-lg">Home</a>
+<a href="#" class="btn btn-primary btn-lg">На главную</a>
 </div>

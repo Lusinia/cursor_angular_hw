@@ -1,42 +1,58 @@
 .mainPageStyle {
-h1 {
-  text-align: center;
-}
+   h1, h2 {
+    text-align: center;
+  }
+  h2 {
+    color: darkcyan;
+    font-size: 16px;
+  }
   .buttons {
-    width:100%;
+    width: 100%;
     float: right;
     a {
       float: right;
       display: inline-block;
-      margin:10px;
+      margin: 10px;
     }
 
   }
-   ul {
-     display: flex;
-     flex-wrap: wrap;
-     list-style: none;
-     li {
-       width: 200px;
-       height: 300px;
-       display: inherit;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    li {
+      width: 200px;
+      display: inherit;
 
-        a:hover {
-         cursor: pointer;
-       }
-       p.genre {
-         color: #6d2626;
-       }
+      a:hover {
+        cursor: pointer;
+      }
+      p {
+        color: cornflowerblue;
+      }
+      p.genre {
+        color: #6d2626;
+      }
 
-       h3, h4 {
-         text-decoration: none;
-         font-size: 12px;
-       }
+      h3, h4 {
+        text-decoration: none;
+        font-size: 12px;
+      }
 
-       md-card {
-         height:100%;
-         width:100%;
-       }
-     }
-   }
+      md-card {
+        height: 100%;
+        width: 100%;
+
+      }
+    }
+    img.md-card-image {
+      display: block;
+      margin: auto;
+    }
+  }
+  footer {
+    p {
+      text-align: center;
+    }
+  }
 }

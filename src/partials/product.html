@@ -1,18 +1,19 @@
 <div class="{{pageStyle}}">
     <md-toolbar class="md-warn">
-        <a href="#orders" class="btn btn-primary btn-lg" data-ng-click="addOrder(item)">Buy</a>
+        <a href="#orders" class="btn btn-primary btn-lg" data-ng-click="addOrder(item)">Купить всего за  $ {{ cost }}</a>
 
     </md-toolbar>
 
     <md-content flex layout-padding>
         <h1>{{ title}}</h1>
-        <img src="{{ img }}" alt="img" width="300">
+        <img  class="img-responsive" src="{{ img }}" alt="img" width="300">
         <p> {{ description }}</p>
 
-       <p> <span>$ {{ cost }}</span>  <b>Жанр: <span>{{genre}}</span></b>
+       <p>  <b>Жанр: <span>{{genre}}</span></b>
        </p>
     </md-content>
 
-    <a href="#orders" ng-click="deleteProduct()">DELETE</a>
+    <a href="#orders" ng-click="deleteProduct()" class="btn btn-warning">Удалить книгу</a>
+    <a href="#"   class="btn btn-info">На главную</a>
 
 </div>

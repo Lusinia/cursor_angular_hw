@@ -22,7 +22,7 @@ gulp.task("clean", function (cb) {
 });
 
 gulp.task("css", function () {
-    return gulp.src("./src/styles/less/*.less")
+    return gulp.src("./src/styles/less/main.less")
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(concatCss("style.css"))
