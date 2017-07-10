@@ -1,0 +1,27 @@
+<div class="{{ pageStyle }}">
+
+<h1>Shop Page</h1>
+<h2>Home</h2>
+ 
+ <a href="#orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg">My Orders {{orders.length}}</a>
+ <a href="#add" class="btn btn-primary btn-lg">Add</a>
+    <input type="text" name="search" placeholder="Enter Theme" data-ng-model="search" value="sky in flowers" ng-keyup='loadData(search)' >
+ <ul class="list">
+
+     <a href="#product/{{ prod.id }}" data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"' data-ng-click="showProduct(prod)" data-ng-model="item">
+        <li>
+            <md-card>
+            <img  src="{{ prod.img }}" width="150" class="md-card-image" alt="image caption" /> <br>
+            <md-card-content>
+                <h3>  {{ prod.title }} </h3>
+                <h4>
+                    {{ prod.desc.substring(0, 100) }}
+                </h4>
+
+            </md-card-content>
+            </md-card>
+        </li>
+              </a>
+
+ </ul>
+ </div>
