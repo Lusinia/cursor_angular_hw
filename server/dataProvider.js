@@ -1,38 +1,8 @@
 var DataProvider = function() {
-
-  var data = [
-    {
-      name: 'John',
-      surname: 'Dou',
-      age: 21,
-      photo: null,
-      id: 1
-    }, {
-      name: 'Celvin',
-      surname: 'Klein',
-      age: 56,
-      photo: '',
-      id: 2
-    }, {
-      name: 'Philipp',
-      surname: 'Plein',
-      age: 42,
-      photo: '',
-      id: 3
-    }, {
-      name: 'Loro',
-      surname: 'Piana',
-      age: 18,
-      photo: '',
-      id: 4
-    }
-  ];
+  var data = require('./volumes.json');
 
   this.getData = function(response) {
-    response.send({
-      status: 200,
-      data: data
-    });
+  return data
   };
 
   this.updateData = function(data, response) {

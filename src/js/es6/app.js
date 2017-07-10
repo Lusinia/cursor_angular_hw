@@ -57,18 +57,13 @@ shopApp.factory("productsFactory", ["$http", ($http) => {
         return products;
     };
     factory.setProducts = (data) => {
-        $http.post('http://localhost:8080/', data)
-            .success(function (data, status, headers, config) {
-            })
-            .error(function (data, status, header, config) {
-            });
-        // products = data;
+        products = data;
 
     };
     factory.addProduct = (item) => {
         $http({
             method: 'post',
-            url:'https://www.googleapis.com/books/v1/volumes?q=star',
+            url:'http://localhost:8080/',
             data: item,
             config: 'Content-Type: application/json;'
         }).then(function (response) {
