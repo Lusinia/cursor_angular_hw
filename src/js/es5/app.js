@@ -1,7 +1,7 @@
 "use strict";
 
 // define our application and pull in ngRoute and ngAnimate
-var shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
+var shopApp = angular.module("shopApp", ["ngRoute"]);
 //
 // ROUTING ===============================================
 // set our routing for this application

@@ -13,11 +13,11 @@ var gulp = require("gulp"),
     series = require("gulp-sequence"),
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
-     browserSync = require("browser-sync").create();
+    browserSync = require("browser-sync").create();
 
 
 gulp.task("clean", function (cb) {
-    return del(['./src/js/es5',"./build"], cb);
+    return del(['./src/js/es5', "./build"], cb);
 });
 
 gulp.task("css", function () {
@@ -43,7 +43,7 @@ gulp.task("es6", function () {
         }))
 
         .pipe(gulp.dest("./src/js/es5"))
- });
+});
 
 gulp.task("js", ['es6'], function (cb) {
     pump([
@@ -91,5 +91,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', series('clean', 'js', 'copy', 'css', 'index', 'html'));
-gulp.task('dev', ['server', 'watch']);
 gulp.task('default', series('build', ['server', 'watch']));
