@@ -9,13 +9,15 @@
                     {
                         title: $scope.newProduct.title,
                         img: $scope.newProduct.img,
-                        desc: $scope.newProduct.desc,
+                        description: $scope.newProduct.desc,
+                        genre: $scope.newProduct.genre,
+                        cost: $scope.newProduct.cost,
                         id: Math.random()
                     }
-                );
 
-            };
+                );
+             };
 
         }
-        ])
+        ]);
 }());

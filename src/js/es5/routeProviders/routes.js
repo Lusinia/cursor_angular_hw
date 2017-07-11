@@ -1,14 +1,25 @@
- // define our application and pull in ngRoute and ngAnimate
-let shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
-//
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.config = undefined;
+
+var _module = require('../module/module');
+
+var _module2 = _interopRequireDefault(_module);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // ROUTING ===============================================
 // set our routing for this application
 // each route will pull in a different controller
-shopApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+var config = exports.config = function config() {
+    _module2.default.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-    $routeProvider
+        $routeProvider
 
-    // home page
+        // home page
         .when("/", {
             templateUrl: "../partials/home.html",
             controller: "mainController"
@@ -30,8 +41,7 @@ shopApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locatio
         .when("/product/:id", {
             templateUrl: "../partials/product.html",
             controller: "ShowProduct"
-        })
-
-        .otherwise({redirectTo: "/orders"});
-    $locationProvider.html5Mode(true);
-}]);
+        }).otherwise({ redirectTo: "/" });
+        // $locationProvider.html5Mode(true);
+    }]);
+};

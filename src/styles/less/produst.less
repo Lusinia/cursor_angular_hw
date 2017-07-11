@@ -1,7 +1,7 @@
 .showProductStyle {
   img {
     display: inline-block;
-    max-width:25%;
+    height:75vh;
     float: left;
     margin:2%;
   }
@@ -13,19 +13,22 @@
   }
   p {
     display: inline-block;
-    width:65%;
-    float: left;
+    width:50%;
+    float: right;
     margin:3%;
     color: darkblue;
     b {
       text-align: right;
       display: block;
-
       span {
         color: indianred;
       }
     }
   }
+.buy {
+  width:50%;
+  margin:5px auto;
+}
   a.btn.btn-warning {
     display: block;
     width: 20%;
@@ -34,5 +37,45 @@
   }
   a.btn.btn-info {
     margin: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    img {
+      display:block;
+      width:50%;
+      margin:2% auto;
+      float: none;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18px;
+      width:100%;
+     }
+    p.desc {
+      display: block;
+      width:90%;
+      float: none;
+      margin:auto;
+      color: darkcyan;
+      b {
+        text-align: right;
+        display: block;
+        span {
+          color: indianred;
+        }
+      }
+    }
+    .buy {
+      width:50%;
+      margin:5px auto;
+    }
+    a.btn.btn-warning {
+      display: block;
+      width: 30%;
+      float: right;
+      margin: 10px;
+    }
+    a.btn.btn-info {
+      margin: 10px;
+    }
   }
 }

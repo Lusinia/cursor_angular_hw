@@ -56,21 +56,5 @@ app.delete('/product/:id', function (req, res) {
     res.send('delete request');
 });
 app.listen(8080, function () {
-    console.log('Example app listening on port 8080!');
+    console.log('Your app listening on port 8080!');
 });
-
-/*  var items = [];
- items.push(data);
- items.push(req.body);
- var string = JSON.stringify(items);
-
- fs.writeFile('./volumes.json', string, 'utf8', function (err) {
- if (err) return console.error(err);
- console.log('done');
- })
-
- console.log(items);
- console.log(req.body);
-
- res.send('Got a POST request');
- */

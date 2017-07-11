@@ -3,9 +3,9 @@
     <h1>Книжный магазин</h1>
     <h2>Книги на любой вкус</h2>
     <div class="buttons">
-        <a href="#add" class="btn btn-primary btn-lg">Добавить книгу</a>
+        <a href="/add" class="btn btn-primary btn-lg">Добавить книгу</a>
 
-        <a href="#orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">Мои заказы
+        <a href="/orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">Мои заказы
             <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
             {{orders.length}}</a>
     </div>
@@ -16,7 +16,7 @@
             data-ng-model="item">
             <md-card>
                 <p class="genre"> {{ prod.genre }}</p>
-                <a href="#product/{{ prod.id }}">
+                <a href="/product/{{ prod.id }}">
                     <h3> {{ prod.title }} </h3>
                     <img src="{{ prod.img }}" width="100" class="md-card-image" alt="image caption"/> <br>
                 </a>

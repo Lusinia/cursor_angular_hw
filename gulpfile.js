@@ -18,45 +18,37 @@ var gulp = require("gulp"),
 
 
 gulp.task("clean", function (cb) {
-    return del("./build", cb);
+    return del(['./src/js/es5',"./build"], cb);
 });
 
 gulp.task("css", function () {
     return gulp.src("./src/styles/less/main.less")
         .pipe(sourcemaps.init())
         .pipe(less())
+        .pipe(sourcemaps.write())
         .pipe(concatCss("style.css"))
         .pipe(autoprefixer({browsers: ["last 3 version", "> 1%", "ie 8", "ie 9", "Opera 12.1"]}))
         .pipe(csso())
-        .pipe(sourcemaps.write())
         .pipe(gulp.dest("./build/styles"))
         .pipe(browserSync.stream())
 
 });
 
-//
-// gulp.task("js", function () {
-//     return gulp.src("./src/js/es6/app.js")
-//        .pipe(jshint('.jshintrc'))
-//         .pipe(jshint.reporter('jshint-stylish', {beep: true}))
-//         .pipe(babel({
-//             'presets': ['es2015']
-//         }))
-//       .pipe( sourcemaps.init())
-//      //   .pipe(concat('app.js'))
-//        // .pipe( uglify())
-//        .pipe( sourcemaps.write())
-//         .pipe(gulp.dest("./build/js"))
-//  });
 
-gulp.task("js", function (cb) {
+gulp.task("es6", function () {
+    return gulp.src("./src/js/es6/**/*.js")
+        .pipe(jshint('.jshintrc'))
+        .pipe(jshint.reporter('jshint-stylish', {beep: true}))
+        .pipe(babel({
+            'presets': ['es2015']
+        }))
+
+        .pipe(gulp.dest("./src/js/es5"))
+ });
+
+gulp.task("js", ['es6'], function (cb) {
     pump([
-            gulp.src(["./src/js/es6/app.js"]), //"./src/js/libs/*.js",
-            jshint('.jshintrc'),
-            jshint.reporter('jshint-stylish', {beep: true}),
-            babel({
-                'presets': ['es2015']
-            }),
+            gulp.src(["./src/js/libs/*.js", "./src/js/es5/app.js", "./src/js/es5/factories/*.js", "./src/js/es5/controllers/*.js"]),
             sourcemaps.init(),
             concat('app.js'),
             uglify(),

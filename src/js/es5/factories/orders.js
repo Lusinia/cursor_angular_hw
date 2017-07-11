@@ -1,24 +1,25 @@
+"use strict";
+
 (function () {
-    shopApp.factory("ordersFactory", () => {
-        let orders = [{
+    shopApp.factory("ordersFactory", function () {
+        var orders = [{
             id: 1,
             title: "Cat in the dark",
             img: './img/cat2.jpg',
             desc: "Its just me",
             cost: '50',
             quantity: 1
-        }
-        ];
-        let factory = {};
-        factory.getOrders = () => {
+        }];
+        var factory = {};
+        factory.getOrders = function () {
             return orders;
         };
 
-        factory.addOrder = (item) => {
+        factory.addOrder = function (item) {
 
             if (orders.length > 0) {
-                let isCoincidence = false;
-                orders.forEach((order) => {
+                var isCoincidence = false;
+                orders.forEach(function (order) {
                     if (item.title === order.title) {
                         isCoincidence = true;
                         order.quantity++;
@@ -28,16 +29,14 @@
                     orders.push(item);
                 }
             }
-
         };
-        factory.defineCostForItems = (orders) => {
+        factory.defineCostForItems = function (orders) {
             var sum = 0;
-            orders.forEach((order) => {
+            orders.forEach(function (order) {
                 sum += +order.cost;
             });
-            return sum
+            return sum;
         };
         return factory;
     });
-
-}())
+})();

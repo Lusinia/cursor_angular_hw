@@ -1,24 +1,25 @@
-(function() {
-    // FACTORY
-    shopApp.factory("productsFactory", ["$http", "$location", ($http, $location) => {
+"use strict";
 
-        let recieveData = () => {
-            return $http.get('http://localhost:8080/')
+(function () {
+    // FACTORY
+    shopApp.factory("productsFactory", ["$http", "$location", function ($http, $location) {
+
+        var recieveData = function recieveData() {
+            return $http.get('http://localhost:8080/');
         };
         var products = [];
 
-        let factory = {};
-        factory.getJSON = () => {
+        var factory = {};
+        factory.getJSON = function () {
             return recieveData();
-        }
-        factory.getProducts = () => {
+        };
+        factory.getProducts = function () {
             return products;
         };
-        factory.setProducts = (data) => {
+        factory.setProducts = function (data) {
             products = data;
-
         };
-        factory.addProduct = (item) => {
+        factory.addProduct = function (item) {
             $http({
                 method: 'post',
                 url: 'http://localhost:8080/',
@@ -30,23 +31,21 @@
             }, function (response) {
                 console.log(response);
             });
-
-
         };
-        factory.deleteProduct = (data) => {
+        factory.deleteProduct = function (data) {
 
             var productInfo = {
                 index: data.index,
                 productId: data.product.id
-            }
-            $http.delete('http://localhost:8080/product/' + productInfo.productId, {params: productInfo}).then((data) => {
-                console.log(data)
-            })
+            };
+            $http.delete('http://localhost:8080/product/' + productInfo.productId, { params: productInfo }).then(function (data) {
+                console.log(data);
+            });
         };
 
-        factory.findProductById = (id) => {
-            let found;
-            products.forEach((product) => {
+        factory.findProductById = function (id) {
+            var found = void 0;
+            products.forEach(function (product) {
                 if (product.id == id) {
                     found = product;
                 }
@@ -54,7 +53,5 @@
             return found;
         };
         return factory;
-    }
-    ]);
-
-}());
+    }]);
+})();
