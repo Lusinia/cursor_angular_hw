@@ -12,8 +12,8 @@
 
     <ul class="list">
 
-        <li data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"' data-ng-click="showProduct(prod)"
-            data-ng-model="item">
+        <li data-ng-repeat='prod in products | filter: prod.title | orderBy: "title"' data-ng-click="showProduct(prod) "
+            ng-animate=" 'animate' "  data-ng-model="item">
             <md-card>
                 <p class="genre"> {{ prod.genre }}</p>
                 <a href="/product/{{ prod.id }}">

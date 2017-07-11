@@ -29,19 +29,17 @@
     "gulp-csso": "^2.0.0",
     "gulp-jshint": "^2.0.4",
     "gulp-less": "^3.3.2",
-    "gulp-less-sourcemap": "^1.4.3",
-    "gulp-ng-annotate": "^2.0.0",
-    "gulp-sequence": "^0.4.6",
+     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "method-override": "^2.3.9",
     "pump": "^1.0.2",
+    "del": "^3.0.0",
     "uglify-js": "^3.0.17"
   },
   "dependencies": {
-    "del": "^3.0.0",
     "express": "^4.15.3",
     "normalize.css": "^4.1.1"
   }

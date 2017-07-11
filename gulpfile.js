@@ -13,8 +13,7 @@ var gulp = require("gulp"),
     series = require("gulp-sequence"),
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
-    ngAnnotate = require('gulp-ng-annotate'),
-    browserSync = require("browser-sync").create();
+     browserSync = require("browser-sync").create();
 
 
 gulp.task("clean", function (cb) {

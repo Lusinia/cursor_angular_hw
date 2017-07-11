@@ -27,7 +27,7 @@
                     $scope.products = list;
 
                 });
-            }
+            };
 
 
             var init = () => {
