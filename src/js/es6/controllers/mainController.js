@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     // CONTROLLERS ============================================
 // home page controller
@@ -9,7 +9,8 @@
             $scope.products = [];
             $scope.orders = [];
             $scope.item = {};
-
+            $scope.genreList =[];
+            $scope.filters = '';
             let createList = () => {
                 productsFactory.getJSON().then((items) => {
                     let list = [];
@@ -19,18 +20,27 @@
                         listItem.title = key.title;
                         listItem.img = key.img;
                         listItem.genre = key.genre;
-                        listItem.cost = key.cost;
+                        listItem.cost = +key.cost;
                         listItem.id = key.id;
                         list.push(listItem);
                     });
                     productsFactory.setProducts(list);
                     $scope.products = list;
 
+                    var genreList = _.map(list, 'genre');
+                    $scope.genreList = _.uniq(genreList);
+
+                    $scope.myFilter=(link) => {
+                        if(link == null) {
+                            $scope.filters = '';
+                        } else {
+                            $scope.filters = link;
+                        }
+                    }
+
                 });
             };
-
-
-            var init = () => {
+        var init = () => {
                 $scope.products = createList();
                 $scope.orders = ordersFactory.getOrders();
             };

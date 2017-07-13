@@ -3,7 +3,7 @@
     shopApp.factory("productsFactory", ["$http", "$location", ($http, $location) => {
 
         let recieveData = () => {
-            return $http.get('http://localhost:8080/')
+            return $http.get('http://localhost:8080/',{ cache: true})
         };
         var products = [];
 

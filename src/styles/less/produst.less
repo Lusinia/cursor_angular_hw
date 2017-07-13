@@ -1,4 +1,7 @@
 .showProductStyle {
+  .product-content {
+    width:100%;
+  }
   img {
     display: inline-block;
     height:75vh;
@@ -28,6 +31,7 @@
 .buy {
   width:50%;
   margin:5px auto;
+  display: block;
 }
   a.btn.btn-warning {
     display: block;
@@ -37,6 +41,7 @@
   }
   a.btn.btn-info {
     margin: 10px;
+    float: left;
   }
   @media screen and (max-width: 768px) {
     img {
@@ -70,12 +75,13 @@
     }
     a.btn.btn-warning {
       display: block;
-      width: 30%;
+      width: 45%;
       float: right;
       margin: 10px;
     }
     a.btn.btn-info {
       margin: 10px;
+      width: 45%;
     }
   }
 }
