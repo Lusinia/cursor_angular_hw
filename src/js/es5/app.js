@@ -2,7 +2,7 @@
 
 // define our application and pull in ngRoute and ngAnimate
 var shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
-//
+
 // ROUTING ===============================================
 // set our routing for this application
 // each route will pull in a different controller
