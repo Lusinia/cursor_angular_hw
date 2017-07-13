@@ -1,3 +1,4 @@
+
  // define our application and pull in ngRoute and ngAnimate
 let shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
 //

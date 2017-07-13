@@ -1,8 +1,7 @@
-
-@sm : "screen and (max-width: 768px)";
-@md : "screen and (max-width: 991px)";
-@xl : "screen and (max-width: 1200px)";
-@con : "screen and  (min-width: 768px) and (max-width: 991px)";
+@sm: "screen and (max-width: 768px)";
+@md: "screen and (max-width: 991px)";
+@xl: "screen and (max-width: 1200px)";
+@con: "screen and  (min-width: 768px) and (max-width: 991px)";
 @mainColor: #fafafa;
 @mainFontColor: darkblue;
 
@@ -19,7 +18,6 @@ body {
 body {
   background: @mainColor;
   background-image: url(../img/concrete-texture.png);
-  background-repeat: repeat;
   color: @mainFontColor;
   font-size: 14px;
   margin: 0;
@@ -36,9 +34,40 @@ footer {
 main {
   flex: 1 0 auto;
 }
+
 footer {
-  text-align: center;
-  margin: 20px;
-  font-size: 18px;
-  color: dodgerblue;
+  margin: 10px auto;
+  p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: dodgerblue;
+    width: 46%;
+    display: inline-block;
+  }
+  .socials {
+    width: 46%;
+    display: inline-block;
+    margin: 0;
+    ul {
+      float: right;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        padding: 10px;
+        transition: all 0.5s;
+      }
+      li:hover {
+        transform: scale(1.1);
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+      }
+    }
+  }
 }
+
