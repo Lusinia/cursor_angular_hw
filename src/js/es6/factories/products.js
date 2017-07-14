@@ -1,9 +1,9 @@
 (function() {
     // FACTORY
-    shopApp.factory("productsFactory", ["$http", "$location", ($http, $location) => {
+    shopApp.factory("productsFactory", ["$http", "$location", "$timeout", ($http, $location, $timeout) => {
 
         let recieveData = () => {
-            return $http.get('http://localhost:8080/',{ cache: true})
+            return $http.get('http://localhost:8080/')
         };
         var products = [];
 
@@ -26,7 +26,10 @@
                 config: 'Content-Type: application/json;'
             }).then(function (response) {
                 console.log(response);
-                $location.path('/');
+                $timeout(()=> {
+                    $location.path('/');
+
+                },1000)
             }, function (response) {
                 console.log(response);
             });
@@ -40,6 +43,10 @@
                 productId: data.product.id
             }
             $http.delete('http://localhost:8080/product/' + productInfo.productId, {params: productInfo}).then((data) => {
+                $timeout(()=> {
+                    $location.path('/');
+                }, 1000)
+
                 console.log(data)
             })
         };

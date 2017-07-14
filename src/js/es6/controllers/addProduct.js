@@ -2,13 +2,11 @@
     shopApp.controller("addProduct",
         ["$scope", "productsFactory", ($scope, productsFactory) => {
             $scope.pageStyle = 'addStyle';
+            $scope.options = [
+                "Детективы", "Психология", "Фантастика",
+                "Фентези", "Сказки", "Женские романы", "Религия", "Ужасы"];
 
             $scope.addProduct = () => {
-                $scope.newProduct.title = '';
-                $scope.newProduct.img = '';
-                $scope.newProduct.desc = '';
-                $scope.newProduct.genre = '';
-                $scope.newProduct.cost = '';
 
                 productsFactory.addProduct(
                     {
@@ -20,6 +18,7 @@
                         id: Math.random()
                     }
                 );
+
             };
 
         }

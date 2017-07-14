@@ -1,4 +1,4 @@
-(function() {
+(function () {
     shopApp.controller("ShowProduct",
         ["$scope", "$routeParams", "productsFactory", "ordersFactory", ($scope, $routeParams, productsFactory, ordersFactory) => {
             $scope.pageStyle = 'showProductStyle';
@@ -15,20 +15,18 @@
                 ordersFactory.addOrder({
                     title: currentProduct.title,
                     id: ordersFactory.getOrders().length + 1,
-                    cost:  currentProduct.cost,
+                    cost: currentProduct.cost,
                     quantity: 1
                 });
-
             };
 
             $scope.deleteProduct = () => {
-
+                console.log(currentProduct)
                 var index = $scope.products.indexOf(currentProduct);
                 productsFactory.deleteProduct({
                     index: index,
                     product: currentProduct
                 });
-
             }
         }
         ]);

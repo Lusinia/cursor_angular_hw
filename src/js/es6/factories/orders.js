@@ -1,5 +1,5 @@
 (function () {
-    shopApp.factory("ordersFactory", () => {
+    shopApp.factory("ordersFactory",["$location", ($location) => {
         let orders = [{
             id: 1,
             title: "Cat in the dark",
@@ -28,6 +28,7 @@
                     orders.push(item);
                 }
             }
+            $location.path('/');
 
         };
         factory.defineCostForItems = (orders) => {
@@ -38,6 +39,6 @@
             return sum
         };
         return factory;
-    });
+    }]);
 
 }())

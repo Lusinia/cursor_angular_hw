@@ -7,12 +7,28 @@
             $scope.pageStyle = 'mainPageStyle';
             $scope.pageClass = "page-style";
             $scope.products = [];
+            $scope.isLoaded = false;
             $scope.orders = [];
-            $scope.item = {};
-            $scope.genreList =[];
+            $scope.genreList = [];
             $scope.filters = '';
+            $scope.typeOptions = [
+                { name: 'Название', value: 'title' },
+                { name: 'Жанр', value: 'genre' },
+                { name: 'Цена по возрастанию', value: 'cost' }
+            ];
+            $scope.sortList =  {type : $scope.typeOptions[0].value};
+             // Custom filter
+            $scope.myFilter = (link) => {
+                if (link == null) {
+                    $scope.filters = '';
+                } else {
+                    $scope.filters = link;
+                }
+            };
+            // Get JSON from response and work with it
             let createList = () => {
-                productsFactory.getJSON().then((items) => {
+                 productsFactory.getJSON().then((items) => {
+
                     let list = [];
                     items.data.forEach((key) => {
                         let listItem = {};
@@ -27,25 +43,46 @@
                     productsFactory.setProducts(list);
                     $scope.products = list;
 
-                    var genreList = _.map(list, 'genre');
-                    $scope.genreList = _.uniq(genreList);
+                    var genreList = _.map(list, 'genre'); // take only one key from object
+                    var genres = count();  // make array form no-repeated genres
+                    var genreArrayFromObject = _.map(genres, function (item, i) {  //reconstruct structure for ng-repeat
+                        return {
+                            num: item,
+                            val: i || null
+                        };
+                    });
+                    $scope.genreList = genreArrayFromObject;
 
-                    $scope.myFilter=(link) => {
-                        if(link == null) {
-                            $scope.filters = '';
-                        } else {
-                            $scope.filters = link;
+                    function count() {
+                        genreList.sort();
+                        var uniqValuesObjesc = {};
+                        var current = null;
+                        var cnt = 0;
+                        for (var i = 0; i < genreList.length; i++) {
+                            if (genreList[i] != current) {
+                                current = genreList[i];
+                                cnt = 1;
+                                uniqValuesObjesc[current] = cnt;
+                            } else {
+                                cnt++;
+                                uniqValuesObjesc[current] = cnt;
+                            }
                         }
+                        return uniqValuesObjesc;
                     }
 
                 });
             };
-        var init = () => {
+
+            var init = () => {
                 $scope.products = createList();
                 $scope.orders = ordersFactory.getOrders();
+                $scope.isLoaded = true;
+                console.log( $scope.isLoaded)
             };
 
             init();
+
 
         }
         ]);

@@ -1,6 +1,4 @@
 <div class="{{ pageStyle }}">
-
-    <h1>Книжный магазин</h1>
     <h2>Книги на любой вкус</h2>
     <div class="buttons">
         <a href="/add" class="btn btn-primary btn-lg">Добавить книгу</a>
@@ -9,16 +7,26 @@
             <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
             {{orders.length}}</a>
     </div>
-    <select name="sorting-list"  data-ng-model="sortList" >
-        <option value="" disabled selected style="display: none;">Сортировать по:</option>
-        <option value="title">Название</option>
-        <option value="genre">Жанр</option>
-        <!--<option value="cost">Цена по убыванию</option>-->
-        <option value="cost">Цена по возрастанию</option>
-    </select>
-    <ul class="list">
-        <li data-ng-repeat='prod in products | filter: filters | orderBy: sortList' data-ng-click="showProduct(prod) "
-          data-ng-model="item">
+
+        <select name="sorting-list"  data-ng-model="sortList.type" ng-options='option.value as option.name for option in typeOptions' >
+        </select>
+
+
+    <aside>
+        <ul class="list-group">
+            <li class="list-group-item" data-ng-repeat='genre in genreList '  ng-click="myFilter(genre.val)">
+                <span class="badge">{{genre.num}}</span>  {{genre.val}}
+            </li>
+            <li class="list-group-item"  ng-click="myFilter(null)">
+                <span  class="badge">{{products.length}}</span>Показать все книги
+            </li>
+        </ul>
+    </aside>
+
+    <ul class="list"   ng-show="isLoaded">
+        <li data-ng-repeat='prod in products | filter: filters | orderBy: sortList.type'
+            data-ng-click="showProduct(prod) "
+            data-ng-model="item" class="fadein products">
             <md-card>
                 <p class="genre"> {{ prod.genre }}</p>
                 <a href="/product/{{ prod.id }}">
@@ -28,19 +36,11 @@
                 <p class="desc">
                     {{ prod.description.substring(0, 50) }} ...
                 </p>
-                <div class="cost"> {{prod.cost}} | currency</div>
+                <div class="cost"> {{prod.cost}}$ </div>
             </md-card>
         </li>
     </ul>
 
-    <div class="pagedown-list">
-        <ul >
-            <li class="list" data-ng-repeat='genre in genreList '>
-                <span ng-click="myFilter(genre)">{{genre}}</span>
-            </li>
-            <li class="list"  ng-click="myFilter(null)">
-                <span >Показать все книги</span>
-            </li>
-        </ul>
-    </div>
+
+
 </div>

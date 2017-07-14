@@ -24,6 +24,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
 }
 
 header,
@@ -36,38 +37,86 @@ main {
 }
 
 footer {
-  margin: 10px auto;
-  width:90%;
-  p {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: dodgerblue;
-    width: 46%;
-    display: inline-block;
-  }
-  .socials {
-    width: 46%;
-    display: inline-block;
-    margin: 0;
-    ul {
-      float: right;
-      list-style: none;
+  margin: 20px 0 0 0;
+  width: 100%;
+  background: #99b9d5;
+  border-top: 2px solid #337ab7;
+  box-shadow: 0 -3px 5px #337ab7;
+
+  .footer-wrap {
+    margin: 10px auto;
+    p {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #eff5f6;
+      text-shadow: 1px 1px 1px #333;
+      width: 46%;
+      display: inline-block;
+    }
+    .socials {
+      width: 46%;
+      display: inline-block;
       margin: 0;
-      padding: 0;
-      li {
-        display: inline-block;
-        padding: 10px;
-        transition: all 0.5s;
+      ul {
+        float: right;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: inline-block;
+          padding: 10px;
+          transition: all 0.5s;
+        }
+        li:hover {
+          transform: scale(1.1);
+          filter: brightness(120%);
+          cursor: pointer;
+        }
+        a {
+          text-decoration: none;
+        }
       }
-      li:hover {
-        transform: scale(1.1);
-        filter: brightness(120%);
-        cursor: pointer;
-      }
-      a {
-        text-decoration: none;
-      }
+    }
+  }
+}
+
+.page-header {
+  text-align: center;
+  background: rgba(51, 122, 183, 0.48);
+  border-bottom: 2px solid #337ab7;
+  box-shadow: 0 3px 5px #337ab7;
+  margin: 0;
+  padding: 0;
+  h1 {
+    margin: 0;
+    padding: .67em 0;
+    text-shadow: 1px 1px 2px #f1f2f8;
+  }
+}
+
+select {
+  float: right;
+  background: #fafafa;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  color: crimson;
+
+  option {
+    transition: all 0.4s;
+    background: #c0c0c0;
+    font-size: 14px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .mainPageStyle ul.list li {
+    width: 50%;
+    h3 {
+      font-size: 14px;
     }
   }
 }

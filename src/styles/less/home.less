@@ -1,5 +1,5 @@
 .mainPageStyle {
-   h1, h2 {
+  h1, h2 {
     text-align: center;
   }
   h2 {
@@ -19,12 +19,40 @@
     }
 
   }
-  ul {
+  .disabled {
+    color: indianred;
+  }
+  aside {
+    width: 30%;
+    display: inline-block;
+    float: left;
+  }
+  .list-group-item > .badge {
+    background: cadetblue;
+  }
+
+  li.list-group-item {
+    color: #03A9F4;
+    font-size: 18px;
+    transition: all 0.4s;
+    &:hover {
+      cursor: pointer;
+      color: crimson;
+    }
+
+  }
+
+  md-card {
+    justify-content: space-around;
+  }
+  ul.list {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    width: 65%;
+    float: left;
     li {
-      width: 200px;
+      width: 33%;
       display: inherit;
 
       a:hover {
@@ -37,15 +65,24 @@
         color: #6d2626;
       }
 
-      h3, h4 {
-        text-decoration: none;
-        font-size: 12px;
-        padding: 0 5px;
-      }
-
       md-card {
         height: 100%;
         width: 100%;
+        h3, h4 {
+          text-decoration: none;
+          font-size: 12px;
+          padding: 0 5px;
+        }
+        h3 {
+          font-size: 16px;
+          font-weight: bold;
+          transition: all 0.4s;
+
+        }
+        .cost {
+          color: crimson;
+          font-size: 18px;
+        }
 
       }
     }
@@ -54,9 +91,17 @@
       margin: auto;
     }
   }
-  footer {
-    p {
-      text-align: center;
-    }
+  .fadein  {
+    transition: all 0.5s linear;
   }
+  .fadein.ng-enter {
+    animation: fadeIn  1s;
+  }
+
+  .fadein.ng-leave {
+    animation: fadeOutDown  1s;
+  }
+
+
+
 }

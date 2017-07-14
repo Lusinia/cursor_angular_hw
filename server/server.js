@@ -38,8 +38,7 @@ app.post('/', function (req, res) {
         console.log('done');
     })
 
-    console.log(data)
-    console.log(req.body)
+
 });
 app.delete('/product/:id', function (req, res) {
     var index = req.query.index;
@@ -51,8 +50,8 @@ app.delete('/product/:id', function (req, res) {
     fs.writeFile(__dirname + "/" + 'volumes.json', string, 'utf8', function (err) {
         if (err) return console.error(err);
         console.log('done');
-    })
-    console.log('data', data);
+    });
+
     res.send('delete request');
 });
 app.listen(8080, function () {

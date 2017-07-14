@@ -2,10 +2,10 @@
 
 (function () {
     // FACTORY
-    shopApp.factory("productsFactory", ["$http", "$location", function ($http, $location) {
+    shopApp.factory("productsFactory", ["$http", "$location", "$timeout", function ($http, $location, $timeout) {
 
         var recieveData = function recieveData() {
-            return $http.get('http://localhost:8080/', { cache: true });
+            return $http.get('http://localhost:8080/');
         };
         var products = [];
 
@@ -27,7 +27,9 @@
                 config: 'Content-Type: application/json;'
             }).then(function (response) {
                 console.log(response);
-                $location.path('/');
+                $timeout(function () {
+                    $location.path('/');
+                }, 1000);
             }, function (response) {
                 console.log(response);
             });
@@ -39,6 +41,10 @@
                 productId: data.product.id
             };
             $http.delete('http://localhost:8080/product/' + productInfo.productId, { params: productInfo }).then(function (data) {
+                $timeout(function () {
+                    $location.path('/');
+                }, 1000);
+
                 console.log(data);
             });
         };

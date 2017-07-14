@@ -22,7 +22,7 @@
         };
 
         $scope.deleteProduct = function () {
-
+            console.log(currentProduct);
             var index = $scope.products.indexOf(currentProduct);
             productsFactory.deleteProduct({
                 index: index,

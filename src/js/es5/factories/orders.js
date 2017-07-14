@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    shopApp.factory("ordersFactory", function () {
+    shopApp.factory("ordersFactory", ["$location", function ($location) {
         var orders = [{
             id: 1,
             title: "Cat in the dark",
@@ -29,6 +29,7 @@
                     orders.push(item);
                 }
             }
+            $location.path('/');
         };
         factory.defineCostForItems = function (orders) {
             var sum = 0;
@@ -38,5 +39,5 @@
             return sum;
         };
         return factory;
-    });
+    }]);
 })();
