@@ -32,11 +32,9 @@
             $location.path('/');
         };
         factory.defineCostForItems = function (orders) {
-            var sum = 0;
-            orders.forEach(function (order) {
-                sum += +order.cost;
-            });
-            return sum;
+            orders.reduce(orders, function (curr, all) {
+                all += curr.cost;
+            }, 0);
         };
         return factory;
     }]);

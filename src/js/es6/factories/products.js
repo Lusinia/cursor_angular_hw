@@ -1,9 +1,9 @@
 (function() {
     // FACTORY
     shopApp.factory("productsFactory", ["$http", "$location", "$timeout", ($http, $location, $timeout) => {
-
+        let API = 'http://localhost:8080/';
         let recieveData = () => {
-            return $http.get('http://localhost:8080/')
+            return $http.get(API)
         };
         var products = [];
 
@@ -21,7 +21,7 @@
         factory.addProduct = (item) => {
             $http({
                 method: 'post',
-                url: 'http://localhost:8080/',
+                url: API,
                 data: JSON.stringify(item),
                 config: 'Content-Type: application/json;'
             }).then(function (response) {
@@ -42,7 +42,7 @@
                 index: data.index,
                 productId: data.product.id
             }
-            $http.delete('http://localhost:8080/product/' + productInfo.productId, {params: productInfo}).then((data) => {
+            $http.delete(API + 'product/' + productInfo.productId, {params: productInfo}).then((data) => {
                 $timeout(()=> {
                     $location.path('/');
                 }, 1000)

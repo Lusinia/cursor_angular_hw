@@ -58,6 +58,7 @@ gulp.task("js", ["es6", "templateCache"], function (cb) {
     pump([
             gulp.src([
                 "./src/js/libs/*.js",
+                "./src/js/es5/utils/utils.js",
                 "./src/js/es5/app.js",
                 "./src/temp/*.js",
                 "./src/js/es5/factories/*.js",

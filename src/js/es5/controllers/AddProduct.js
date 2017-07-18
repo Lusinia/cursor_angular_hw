@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    shopApp.controller("addProduct", ["$scope", "productsFactory", function ($scope, productsFactory) {
+    shopApp.controller("AddProduct", ["$scope", "productsFactory", function ($scope, productsFactory) {
         $scope.pageStyle = 'addStyle';
         $scope.options = ["Детективы", "Психология", "Фантастика", "Фентези", "Сказки", "Женские романы", "Религия", "Ужасы"];
 

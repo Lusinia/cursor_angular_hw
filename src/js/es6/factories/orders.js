@@ -31,13 +31,7 @@
             $location.path('/');
 
         };
-        factory.defineCostForItems = (orders) => {
-            var sum = 0;
-            orders.forEach((order) => {
-                sum += +order.cost;
-            });
-            return sum
-        };
+        factory.defineCostForItems = (orders) => { orders.reduce(orders, (curr, all) => { all += curr.cost; }, 0); }
         return factory;
     }]);
 

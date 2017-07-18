@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0.415787545,
+    "username": "John",
+    "password": "password",
+    "orders": [],
+    "lastOrderData": 0,
+    "lastOrdersCount": 0
+  },
+  {
+    "id": 0.654612445,
+    "username": "Liza",
+    "password": "password",
+    "orders": [],
+    "lastOrderData": 0,
+    "lastOrdersCount": 0
+  }
+
+
+]

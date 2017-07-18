@@ -1,5 +1,5 @@
 (function () {
-    shopApp.controller("addProduct",
+    shopApp.controller("AddProduct",
         ["$scope", "productsFactory", ($scope, productsFactory) => {
             $scope.pageStyle = 'addStyle';
             $scope.options = [

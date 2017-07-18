@@ -1,38 +1,42 @@
-
- // define our application and pull in ngRoute and ngAnimate
-let shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
+// (() => {
+    // define our application and pull in ngRoute and ngAnimate
+    let shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
 
 // ROUTING ===============================================
 // set our routing for this application
 // each route will pull in a different controller
-shopApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+    shopApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 
-    $routeProvider
+        $routeProvider
 
-    // home page
-        .when("/", {
-            templateUrl: "../partials/home.html",
-            controller: "mainController"
-        })
+        // home page
+            .when("/", {
+                templateUrl: "../partials/home.html",
+                controller: "MainController"
+            })
 
-        // add page
-        .when("/add", {
-            templateUrl: "../partials/add.html",
-            controller: "addProduct"
-        })
+            // add page
+            .when("/add", {
+                templateUrl: "../partials/add.html",
+                controller: "AddProduct"
+            })
 
-        // orders page
-        .when("/orders", {
-            templateUrl: "../partials/orders.html",
-            controller: "ShowOrders"
-        })
+            // orders page
+            .when("/orders", {
+                templateUrl: "../partials/orders.html",
+                controller: "ShowOrders"
+            })
 
-        // product page
-        .when("/product/:id", {
-            templateUrl: "../partials/product.html",
-            controller: "ShowProduct"
-        })
+            // product page
+            .when("/product/:id", {
+                templateUrl: "../partials/product.html",
+                controller: "ShowProduct"
+            })
 
-        .otherwise({redirectTo: "/orders"});
-    $locationProvider.html5Mode(true);
-}]);
+
+            .otherwise({redirectTo: "/orders"});
+
+        $locationProvider.html5Mode(true);
+    }]);
+//
+// })();

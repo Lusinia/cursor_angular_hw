@@ -2,7 +2,7 @@
 
     // CONTROLLERS ============================================
 // home page controller
-    shopApp.controller("mainController",
+    shopApp.controller("MainController",
         ["$scope", "$location", "$routeParams", "productsFactory", "ordersFactory", ($scope, $location, $routeParams, productsFactory, ordersFactory) => {
             $scope.pageStyle = 'mainPageStyle';
             $scope.pageClass = "page-style";
@@ -25,7 +25,7 @@
                     $scope.filters = link;
                 }
             };
-            // Get JSON from response and work with it
+            // Get JSON of products from response and work with it
             let createList = () => {
                  productsFactory.getJSON().then((items) => {
 
@@ -74,12 +74,12 @@
                 });
             };
 
+
             var init = () => {
                 $scope.products = createList();
                 $scope.orders = ordersFactory.getOrders();
                 $scope.isLoaded = true;
-                console.log( $scope.isLoaded)
-            };
+             };
 
             init();
 

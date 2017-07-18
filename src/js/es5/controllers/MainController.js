@@ -4,7 +4,7 @@
 
     // CONTROLLERS ============================================
     // home page controller
-    shopApp.controller("mainController", ["$scope", "$location", "$routeParams", "productsFactory", "ordersFactory", function ($scope, $location, $routeParams, productsFactory, ordersFactory) {
+    shopApp.controller("MainController", ["$scope", "$location", "$routeParams", "productsFactory", "ordersFactory", function ($scope, $location, $routeParams, productsFactory, ordersFactory) {
         $scope.pageStyle = 'mainPageStyle';
         $scope.pageClass = "page-style";
         $scope.products = [];
@@ -22,7 +22,7 @@
                 $scope.filters = link;
             }
         };
-        // Get JSON from response and work with it
+        // Get JSON of products from response and work with it
         var createList = function createList() {
             productsFactory.getJSON().then(function (items) {
 
@@ -75,7 +75,6 @@
             $scope.products = createList();
             $scope.orders = ordersFactory.getOrders();
             $scope.isLoaded = true;
-            console.log($scope.isLoaded);
         };
 
         init();

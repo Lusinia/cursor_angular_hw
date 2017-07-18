@@ -1,5 +1,6 @@
 "use strict";
 
+// (() => {
 // define our application and pull in ngRoute and ngAnimate
 var shopApp = angular.module("shopApp", ["ngRoute", "ngAnimate"]);
 
@@ -13,13 +14,13 @@ shopApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
     // home page
     .when("/", {
         templateUrl: "../partials/home.html",
-        controller: "mainController"
+        controller: "MainController"
     })
 
     // add page
     .when("/add", {
         templateUrl: "../partials/add.html",
-        controller: "addProduct"
+        controller: "AddProduct"
     })
 
     // orders page
@@ -33,5 +34,8 @@ shopApp.config(['$routeProvider', '$locationProvider', function ($routeProvider,
         templateUrl: "../partials/product.html",
         controller: "ShowProduct"
     }).otherwise({ redirectTo: "/orders" });
+
     $locationProvider.html5Mode(true);
 }]);
+//
+// })();

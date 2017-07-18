@@ -1,17 +1,23 @@
 <div class="{{ pageStyle }}">
     <h2>Книги на любой вкус</h2>
-    <div class="buttons">
-        <a href="/add" class="btn btn-primary btn-lg">Добавить книгу</a>
+        <div class="top-page">
+            <form action="http://localhost:8080/" method="POST" class="auth" ng-controller = 'AuthController'>
+                <input type="text" name="login"  ng-model="username" placeholder="Login" class="form-control auth-input">
+                <input type="password" name="password"  ng-model="password" placeholder="Password" class=" form-control auth-input">
 
-        <a href="/orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">Мои заказы
-            <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-            {{orders.length}}</a>
-    </div>
-
-        <select name="sorting-list"  data-ng-model="sortList.type" ng-options='option.value as option.name for option in typeOptions' >
-        </select>
-
-
+                <button type="submit" ng-click="register()" class="btn btn-info auth-input">Register</button>
+                <button type="button" ng-click="login()" class="btn btn-info auth-input">Log In</button>
+                <button type="submit" ng-click="logout()" class="btn btn-info auth-input">Log Out</button>
+            </form>
+            <div class="top-page-wrapper">
+                <a href="/add" class="btn btn-primary btn-lg">Добавить книгу</a>
+                <a href="/orders" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">Мои заказы
+                    <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                    {{orders.length}}</a>
+                <select name="sorting-list"  data-ng-model="sortList.type" ng-options='option.value as option.name for option in typeOptions' >
+                </select>
+            </div>
+        </div>
     <aside>
         <ul class="list-group">
             <li class="list-group-item" data-ng-repeat='genre in genreList '  ng-click="myFilter(genre.val)">
@@ -20,9 +26,9 @@
             <li class="list-group-item"  ng-click="myFilter(null)">
                 <span  class="badge">{{products.length}}</span>Показать все книги
             </li>
+            <li>Stack: Mongo Express Angular Node</li>
         </ul>
     </aside>
-
     <ul class="list"   ng-show="isLoaded">
         <li data-ng-repeat='prod in products | filter: filters | orderBy: sortList.type'
             data-ng-click="showProduct(prod) "
