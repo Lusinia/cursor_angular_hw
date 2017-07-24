@@ -1,23 +1,21 @@
 "use strict";
 
 (function () {
-    shopApp.factory("ordersFactory", ["$location", function ($location) {
-        var orders = [{
-            id: 1,
-            title: "Cat in the dark",
-            img: './img/cat2.jpg',
-            desc: "Its just me",
-            cost: '50',
-            quantity: 1
-        }];
+    shopApp.factory("ordersFactory", ["$location", "$http", function ($location, $http) {
+        var API = 'http://localhost:8080';
+        var orders = [];
+
         var factory = {};
         factory.getOrders = function () {
             return orders;
         };
+        factory.setOrderToRemote = function (data, success, error) {
+            $http.post(API + '/me/orders', data).success(success).error(error);
+            orders = [];
+        };
 
         factory.addOrder = function (item) {
-
-            if (orders.length > 0) {
+            if (orders.length >= 0) {
                 var isCoincidence = false;
                 orders.forEach(function (order) {
                     if (item.title === order.title) {
@@ -32,8 +30,8 @@
             $location.path('/');
         };
         factory.defineCostForItems = function (orders) {
-            orders.reduce(orders, function (curr, all) {
-                all += curr.cost;
+            return orders.reduce(function (curr, all) {
+                return +curr + +all.cost;
             }, 0);
         };
         return factory;

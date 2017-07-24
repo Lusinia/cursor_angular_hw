@@ -1,9 +1,9 @@
 "use strict";
 
 (function () {
-    shopApp.controller("ShowProduct", ["$scope", "$routeParams", "productsFactory", "ordersFactory", function ($scope, $routeParams, productsFactory, ordersFactory) {
+    shopApp.controller("ShowProduct", ["$scope", "$stateParams", "$localStorage", "productsFactory", "ordersFactory", "usersFactory", function ($scope, $stateParams, $localStorage, productsFactory, ordersFactory, usersFactory) {
         $scope.pageStyle = 'showProductStyle';
-        $scope.ProductId = $routeParams.id;
+        $scope.ProductId = $stateParams.id;
         var currentProduct = productsFactory.findProductById($scope.ProductId);
         $scope.img = currentProduct.img;
         $scope.title = currentProduct.title;
@@ -11,6 +11,8 @@
         $scope.description = currentProduct.description;
         $scope.cost = currentProduct.cost;
         $scope.products = productsFactory.getProducts();
+        $scope.isAdmin = $localStorage.isAdmin;
+        $scope.isLogin = $localStorage.token;
 
         $scope.addOrder = function (item) {
             ordersFactory.addOrder({
@@ -19,6 +21,10 @@
                 cost: currentProduct.cost,
                 quantity: 1
             });
+        };
+
+        $scope.addWish = function (item) {
+            console.log('item added ', item);
         };
 
         $scope.deleteProduct = function () {

@@ -4,12 +4,14 @@
 
     // CONTROLLERS ============================================
     // home page controller
-    shopApp.controller("MainController", ["$scope", "$location", "$routeParams", "productsFactory", "ordersFactory", function ($scope, $location, $routeParams, productsFactory, ordersFactory) {
+    shopApp.controller("MainController", ["$scope", "usersFactory", "productsFactory", "ordersFactory", "$localStorage", function ($scope, usersFactory, productsFactory, ordersFactory, $localStorage) {
         $scope.pageStyle = 'mainPageStyle';
         $scope.pageClass = "page-style";
+
         $scope.products = [];
         $scope.isLoaded = false;
-        $scope.orders = [];
+        $scope.isAuthed = $localStorage.isAuthed;
+
         $scope.genreList = [];
         $scope.filters = '';
         $scope.typeOptions = [{ name: 'Название', value: 'title' }, { name: 'Жанр', value: 'genre' }, { name: 'Цена по возрастанию', value: 'cost' }];
@@ -57,7 +59,7 @@
                     var current = null;
                     var cnt = 0;
                     for (var i = 0; i < genreList.length; i++) {
-                        if (genreList[i] != current) {
+                        if (genreList[i] !== current) {
                             current = genreList[i];
                             cnt = 1;
                             uniqValuesObjesc[current] = cnt;
@@ -73,7 +75,6 @@
 
         var init = function init() {
             $scope.products = createList();
-            $scope.orders = ordersFactory.getOrders();
             $scope.isLoaded = true;
         };
 

@@ -3,7 +3,11 @@
 @xl: "screen and (max-width: 1200px)";
 @con: "screen and  (min-width: 768px) and (max-width: 991px)";
 @mainColor: #fafafa;
-@mainFontColor: darkblue;
+@mainFontColor: #3f51b5;
+@lightBlue: #0bacf4;
+@pink: #e4506e;
+@brown: #712c2c;
+@white: #d5e3ea;
 
 @import "home";
 @import "add";
@@ -49,7 +53,7 @@ footer {
       text-align: center;
       margin-bottom: 10px;
       font-size: 18px;
-      color: #eff5f6;
+      color: @white;
       text-shadow: 1px 1px 1px #333;
       width: 46%;
       display: inline-block;
@@ -88,6 +92,8 @@ footer {
   box-shadow: 0 3px 5px #337ab7;
   margin: 0;
   padding: 0;
+  display: inline-block;
+  width: 100%;
   h1 {
     margin: 0;
     padding: .67em 0;
@@ -104,7 +110,7 @@ select {
   border-radius: 5px;
   padding: 5px;
   cursor: pointer;
-  color: crimson;
+  color: @pink;
 
   option {
     transition: all 0.4s;
@@ -112,6 +118,28 @@ select {
     font-size: 14px;
   }
 
+}
+
+ .auth.ng-scope {
+  width:30%;
+  display: inline-block;
+  margin-left: 10px;  float: left;
+  input {
+    //margin: 5px 0;
+    //width:98%;
+    //margin-left:2%;
+    width:98%;
+    margin:5px auto;
+
+    &.btn.btn-info.auth-input {
+      width: 48%;
+      margin-left: 2%;
+
+    }
+  }
+  button {
+    width: 48%;
+  }
 }
 
 @media screen and (max-width: 768px) {

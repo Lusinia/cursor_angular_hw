@@ -1,0 +1,20 @@
+
+<div    class="auth" >
+    <input type="text" ng-show="!isAuthed()" name="login"
+           ng-model="login" placeholder="Login" class="form-control auth-input">
+    <input type="password" ng-show="!isAuthed()" name="password"
+           ng-model="password" placeholder="Password" class=" form-control auth-input">
+        <h3 class="greet" ng-show="isAuthed()" >Привет, {{ defaultUserName }}</h3>
+    <button type="button" ng-show="!isAuthed()"  ng-click="register()" class="btn btn-success auth-input">Register</button>
+    <button  type="button"  ng-show="!isAuthed()"  ng-click="loginUser()" class="btn btn-success auth-input">Log In</button>
+    <button  type="button"  ng-show="isAuthed()"   ng-click="logout()" class="btn btn-success auth-input">Log Out</button>
+    <a  href="/me" ng-show="isAuthed()"  class="btn btn-success auth-input">My Page</a>
+</div>
+<div class="menu-buttons">
+    <a href="/add"  ng-show="isAdmin()" class="btn btn-primary btn-lg">Добавить книгу</a>
+    <a href="/orders" ng-show="isAuthed()" data-ng-click="setOrdersNumber()" class="btn btn-primary btn-lg ">Мои заказы
+        <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+        {{orders.length}}</a>
+</div>
+<!--type="submit"-->
+<!--ng-show="isAuthed"-->

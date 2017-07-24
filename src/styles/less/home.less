@@ -4,33 +4,17 @@
     width: 70%;
     float: right;
   }
-  form.auth {
-    width:30%;
-    display: inline-block;
-    margin-bottom: 10px;
-    input {
-      margin: 5px 0;
-      width:98%;
-      margin-left:2%;
-      &.btn.btn-info.auth-input {
-        width: 48%;
-        margin-right: 1%;
-        margin-left: 2%;
-      }
-        }
-    button {
-      width: 48%;
-    }
-  }
+
   h1, h2 {
     text-align: center;
   }
   h2 {
-    color: darkcyan;
+    color: @mainFontColor;
     font-size: 16px;
   }
   h1 {
-    margin: 0;
+    margin: 10px 20px;
+    float: left;
   }
   .top-page{
     width: 95%;
@@ -44,8 +28,19 @@
 
   }
   .disabled {
-    color: indianred;
+    color: @pink;
   }
+
+  .auth  {
+    width: 50%;
+    float: right;
+    display: block;
+    h3 {
+      font-size:2em;
+      color: @pink;
+    }
+  }
+
   aside {
     width: 30%;
     display: inline-block;
@@ -56,12 +51,12 @@
   }
 
   li.list-group-item {
-    color: #03A9F4;
+    color: @lightBlue;
     font-size: 18px;
     transition: all 0.4s;
     &:hover {
       cursor: pointer;
-      color: crimson;
+      color: @pink;
     }
 
   }
@@ -83,10 +78,10 @@
         cursor: pointer;
       }
       p {
-        color: cornflowerblue;
+        color: @lightBlue;
       }
       p.genre {
-        color: #6d2626;
+        color: @brown;
       }
 
       md-card {
@@ -104,7 +99,7 @@
 
         }
         .cost {
-          color: crimson;
+          color: @pink;
           font-size: 18px;
         }
 

@@ -1,22 +1,22 @@
-var express = require('express'),
-    app = express(),
-    path = require('path'),
-    fs = require('fs'),
-    _ = require("lodash"),
-    methodOverride = require("method-override"),
-    bodyParser = require('body-parser'),
-    moment = require('moment'),
-    util = require('util'),
+var express          = require('express'),
+    app              = express(),
+    path             = require('path'),
+    fs               = require('fs'),
+    _                = require("lodash"),
+    methodOverride   = require("method-override"),
+    bodyParser       = require('body-parser'),
+    moment           = require('moment'),
+    util             = require('util'),
     expressValidator = require('express-validator'),
-    jwt = require('jsonwebtoken'),
-    passport = require("passport"),
-    passportJWT = require("passport-jwt"),
+    jwt              = require('jsonwebtoken'),
+    passport         = require("passport"),
+    passportJWT      = require("passport-jwt"),
 
-    data = require('./models/volumes.json'),
-    users = require('./models/users.json');
+    data             = require('./models/volumes.json'),
+    users            = require('./models/users.json');
 
-ExtractJwt = passportJWT.ExtractJwt;
-JwtStrategy = passportJWT.Strategy;
+    ExtractJwt       = passportJWT.ExtractJwt;
+    JwtStrategy      = passportJWT.Strategy;
 
 var jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
@@ -45,14 +45,12 @@ app.use(expressValidator());
 app.use(methodOverride('X-HTTP-Method'));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(methodOverride('X-Method-Override'));
-app.use(methodOverride('_method'));
 // For put/delete requests
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.header('X-HTTP-Method-Override', 'DELETE');
-    res.header('X-HTTP-Method-Override', 'PUT');
     next();
 });
 
@@ -89,20 +87,9 @@ app.delete('/product/:id', function (req, res) {
 //Login route
 app.post('/auth/login', function (req, res) {
 
-    //Check that the name field is not empty
-    req.checkBody('login', 'Login is required').notEmpty();
-    req.checkBody('password', 'Password is required').notEmpty();
 
-//Trim and escape the  fields.
-    req.sanitize('login').escape();
-    req.sanitize('login').trim();
-    req.sanitize('password').escape();
-    req.sanitize('password').trim();
 
-//Run the validators
-    var errors = req.validationErrors();
-
-    if (req.body.login && req.body.password) {
+if (req.body.login && req.body.password) {
         var login = req.body.login;
         var password = req.body.password;
     }
@@ -136,8 +123,41 @@ app.post('/auth/register', function (req, res) {
 
     req.checkBody('email', 'Invalid Email').isEmail();
     req.checkBody('password', 'Invalid Password').notEmpty();
-    //Run the validators
-    var errors = req.validationErrors();
+
+    // req.checkBody({
+    //     'email': {
+    //         optional: {
+    //             options: { checkFalsy: true } // or: [{ checkFalsy: true }]
+    //         },
+    //         isEmail: {
+    //             errorMessage: 'Invalid Email'
+    //         }
+    //     },
+    //     'password': {
+    //         notEmpty: true,
+    //         matches: {
+    //             options: ["^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" , 'i'] // pass options to the validator with the options property as an array
+    //             // options: [/example/i] // matches also accepts the full expression in the first parameter
+    //         },
+    //         errorMessage: 'Invalid Password' // Error message for the parameter
+    //     },
+    //     'login': { //
+    //         optional: true, // won't validate if field is empty
+    //         isLength: {
+    //             options: [{ min: 2, max: 10 }],
+    //             errorMessage: 'Must be between 2 and 10 chars long' // Error message for the validator, takes precedent over parameter message
+    //         },
+    //         errorMessage: 'Invalid First Name'
+    //     },
+    //     'username': { //
+    //         optional: true, // won't validate if field is empty
+    //         isLength: {
+    //             options: [{ min: 2, max: 10 }],
+    //             errorMessage: 'Must be between 2 and 10 chars long' // Error message for the validator, takes precedent over parameter message
+    //         },
+    //         errorMessage: 'Invalid First Name'
+    //     }
+    // });
 
 
     var user = users[_.findIndex(users, {email: req.body.email, password: req.body.password})];
@@ -195,39 +215,6 @@ app.get("/me", passport.authenticate('jwt', {session: false}), function (req, re
 
 
     })
-
-
-});
-// Secret page- user info change route
-app.put("/me", passport.authenticate('jwt', {session: false}), function (req, res) {
-
-    console.log('req ', req.body);
-    var user = users[_.findIndex(users, {id: req.user.id})];
-        var isPasswordEqualToCurrent, isPasswordEqualBetween, type;
-    // проверить совпадают ли пароли, и различаются ли старый и измененный
-    if (req.body.password !== user.password) {
-        isPasswordEqualToCurrent = false;
-        type = false;
-
-    } else if (req.body.newPassword === user.password) {
-        isPasswordEqualBetween = false;
-        type = false;
-    } else {
-        user.password = req.body.newPassword;
-        user.username = req.body.username;
-        isPasswordEqualToCurrent= true;
-        isPasswordEqualBetween= true;
-        type = true;
-
-        writeToFs('users', users);
-    }
-    res.json({
-        type: type,
-        isPasswordEqualToCurrent: isPasswordEqualToCurrent ,
-        isPasswordEqualToLast: isPasswordEqualBetween
-    });
-
-
 
 
 });
